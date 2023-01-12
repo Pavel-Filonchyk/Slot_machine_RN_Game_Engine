@@ -39,15 +39,15 @@ export default function Main() {
       stop()
     }
   }
-
+  
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../components/fruits/slot_machine.png')} resizeMode="cover" style={styles.image}>
           <View style={styles.bonus}>
-            <Text style={styles.title}>SCORE: {bonus}</Text>
+            <Text style={styles.title}>SCORE: {bonus}$</Text>
           </View>
           <View style={styles.showBonus}>
-            <Text style={styles.title}>BONUS: {showBonus}</Text>
+            <Text style={styles.title}>BONUS: {showBonus}$</Text>
           </View>
           <GameEngine
               ref={engine}
@@ -63,11 +63,7 @@ export default function Main() {
               running={running}
               //onEvent={onEvent}
           />
-          <TouchableOpacity onPress={() => start()} style={styles.btn}
-            // play={play}
-            // stop={stop}
-            // active={isPlaying}
-          >
+          <TouchableOpacity onPress={() => start()} style={styles.btn}>
               <Text style={styles.text}>PUSH</Text>
           </TouchableOpacity>
       </ImageBackground>  
@@ -123,7 +119,7 @@ const styles = StyleSheet.create({
   },
   showBonus: {
     height: 50,
-    width: 110,
+    width: 120,
     backgroundColor: "#ffdd4c",
     borderStyle: 'solid',
     borderWidth: 3,

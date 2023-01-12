@@ -35,8 +35,7 @@ const GameLoop = (entities, { events, dispatch }) => {
         } else {
             setTimeout(() => slotFunc(slot1), 500)
         }
-        slot1.nums = [2, 3, 4, 6, 3, 2, 4, 4, 4]
-        //Array(9).fill(null).map(item => item = Math.floor(Math.random()*9))
+        slot1.nums = Array(9).fill(null).map(item => item = Math.floor(Math.random()*9))
     }
     slot2.nextMove -= 1                              
     if (slot2.nextMove === 0){

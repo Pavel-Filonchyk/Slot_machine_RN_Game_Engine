@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useSound from 'use-sound'
 import { StyleSheet, View, Image } from "react-native"
 import { useSelector, useDispatch } from 'react-redux'
-import { result, collector } from '../core/actions'
+import { result } from '../core/actions'
 import winSound from './sounds/winSound.mp3'
 
 export default function Slots(props) {
