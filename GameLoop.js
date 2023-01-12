@@ -24,7 +24,6 @@ const GameLoop = (entities, { events, dispatch }) => {
             slot0.position[1] += slot0.yspeed 
         }
         slot0.nums = Array(9).fill(null).map(item => item = Math.floor(Math.random()*9))
-        if(slot0.nums[6] === slot0.nums[7] && slot0.nums[6] === slot0.nums[8]){ slot0.styles = slot0.nums[6]}
     }
     slot1.nextMove -= 1                               
     if (slot1.nextMove === 0){
@@ -36,7 +35,7 @@ const GameLoop = (entities, { events, dispatch }) => {
         } else {
             setTimeout(() => slotFunc(slot1), 500)
         }
-        slot1.nums = [2, 4, 6, 4, 5, 6, 1, 1, 1]
+        slot1.nums = [2, 3, 4, 6, 3, 2, 4, 4, 4]
         //Array(9).fill(null).map(item => item = Math.floor(Math.random()*9))
     }
     slot2.nextMove -= 1                              
