@@ -5,17 +5,16 @@ import { StyleSheet, View, ImageBackground, TouchableOpacity, Text } from 'react
 import { useDispatch, useSelector } from 'react-redux'  
 import { onStart, collector } from '../core/actions'
 import Slots from '../components/Slots'
+import Coins from '../components/Coins'
 import mainSound from './sounds/mainSound.mp3'
-
 import { GameLoop } from '../GameLoop'
 
 export default function Main() {
 
   const bonus = useSelector((state) => state.bonus)
-  const showBonus = useSelector((state) => state.showBonus)
   const bonusArr = useSelector((state) => state.bonusArr)
-
   const [running, setRunning] = useState(false)
+
   const [play, { stop }] = useSound(
     mainSound,
     { volume: 0.5 }
@@ -46,19 +45,17 @@ export default function Main() {
           <View style={styles.bonus}>
             <Text style={styles.title}>SCORE: {bonus}$</Text>
           </View>
-          <View style={styles.showBonus}>
-            <Text style={styles.title}>BONUS: {showBonus}$</Text>
-          </View>
+          <Coins/>
           <GameEngine
               ref={engine}
               style={{ width: 326, height: 194, flex: null, overflow: 'hidden', borderStyle: 'solid', borderTopWidth: 3, borderBottomWidth: 3, borderColor: '#eb5a1e'}}   
               systems={[ GameLoop ]}             
               entities={{             
-                  slot0: { position: [0, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, styles: null, nums: null, renderer: <Slots/>},
-                  slot1: { position: [1, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, styles: null, nums: null, renderer: <Slots/>},
-                  slot2: { position: [2, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, styles: null, nums: null, renderer: <Slots/>},
-                  slot3: { position: [3, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, styles: null, nums: null, renderer: <Slots/>},
-                  slot4: { position: [4, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, styles: null, nums: null, renderer: <Slots/>},
+                slot0: { position: [0, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, rotate: 0, nums: null, renderer: <Slots/>},
+                slot1: { position: [1, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, rotate: 0, nums: null, renderer: <Slots/>},
+                slot2: { position: [2, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, rotate: 0, nums: null, renderer: <Slots/>},
+                slot3: { position: [3, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, rotate: 0, nums: null, renderer: <Slots/>},
+                slot4: { position: [4, -6], xspeed: 0, yspeed: 1, nextMove: 3, updateFrequency: 3, size: 64, rotate: 0, nums: null, renderer: <Slots/>},
               }}
               running={running}
               //onEvent={onEvent}
@@ -116,17 +113,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "700",
     color: '#bb1c45'
-  },
-  showBonus: {
-    height: 50,
-    width: 120,
-    backgroundColor: "#ffdd4c",
-    borderStyle: 'solid',
-    borderWidth: 3,
-    borderColor: '#bb1c45',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-    marginBottom: 40
   }
 })
