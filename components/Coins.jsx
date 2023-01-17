@@ -5,9 +5,16 @@ import { useSelector } from 'react-redux'
 export default function Coins() {
     const showBonus = useSelector((state) => state.showBonus)
     
-    const animatedValue = useRef(new Animated.Value(showBonus)).current
+    const animatedValue = useRef(new Animated.Value(0)).current
     const animatedValue2 = useRef(new Animated.Value(0)).current
-    
+    const spin = animatedValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg']
+    })
+    const spin2 = animatedValue2.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg']
+    })
     useEffect(() => {
       start()
       start2()
@@ -37,12 +44,14 @@ export default function Coins() {
         animate(animatedValue2).stop()
       }
     }
+ 
 
+    
     return (
     <View style={styles.wrapCoins}>
       {
         showBonus === 0 ? <Image style={{width: 76, height: 76}} source={require('./fruits/coin.png')}/> 
-        : <Animated.View style={{ height: 76, width: 76, transform: [{ translateX: animatedValue }] }}>
+        : <Animated.View style={{ height: 76, width: 76, transform: [{ translateX: animatedValue }, { rotate: spin }] }}>
           <Image style={{height: '100%', width: '100%'}}source={require('./fruits/coin.png')}/>
         </Animated.View>
       }
@@ -51,7 +60,7 @@ export default function Coins() {
       </View>
       {
         showBonus === 0 ? <Image style={{width: 76, height: 76}} source={require('./fruits/coin.png')}/>
-        :  <Animated.View style={{ height: 76, width: 76, transform: [{ translateX: animatedValue2 }] }}>
+        :  <Animated.View style={{ height: 76, width: 76, transform: [{ translateX: animatedValue2 }, { rotate: spin2  }] }}>
           <Image style={{width: '100%', height: '100%'}} source={require('./fruits/coin.png')}/>
         </Animated.View>
       }
